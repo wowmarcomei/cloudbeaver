@@ -16,17 +16,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Create cloudbeaver directory
+        run: mkdir -p deploy/docker/cloudbeaver-ce/cloudbeaver
+
       - name: Download backend artifacts
         uses: actions/download-artifact@v4
         with:
           name: backend-build-artifacts
-          path: deploy/cloudbeaver/
+          path: deploy/docker/cloudbeaver-ce/cloudbeaver/
 
       - name: Download frontend artifacts
         uses: actions/download-artifact@v4
         with:
           name: frontend-build-artifacts
-          path: deploy/cloudbeaver/web
+          path: deploy/docker/cloudbeaver-ce/cloudbeaver/web
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
